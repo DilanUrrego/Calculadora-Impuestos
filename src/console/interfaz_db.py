@@ -1,3 +1,5 @@
+sys.path.append("src")
+sys.path.append(".")
 from logic.db_logic import Item, insert_item , update_item , delete_item , display_items
 # CLI for Item Management
 class ItemManagerCLI:
@@ -74,6 +76,7 @@ class ItemManagerCLI:
             if tax_type in ['fixed', 'exempt'] or (tax_type[:-1].isdigit() and tax_type.endswith('%')):
                 return tax_type
             print("Invalid tax type. Must be 'fixed', 'exempt', or a valid percentage.")
+            
 
 if __name__ == "__main__":
     cli = ItemManagerCLI()
