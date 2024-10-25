@@ -33,104 +33,92 @@ Calcula el total de impuestos y el precio total de una compra con múltiples art
 - **Salida**:
   - Tupla con el total de impuestos y el precio total de la compra.
 
-## Requisitos
 
-- Python 3.12 o superior.
-- Kivy 2.1.0 o superior
+# proyecto hecho por
+daniel calle, juliana franco
 
-# Instalación de Kivy en Windows
+# Sistema de Gestión de Artículos
+Este proyecto proporciona un sistema de gestión de artículos basado en CLI (Interfaz de Línea de Comandos) con funcionalidades CRUD, utilizando SQLAlchemy para las interacciones con la base de datos y unittest para las pruebas.
 
-Kivy es un marco de trabajo de código abierto diseñado para crear aplicaciones multitáctiles que son compatibles con diversas plataformas, incluida Windows. A continuación, se presentan los pasos para instalar Kivy en un sistema operativo Windows.
+# Tabla de Contenidos
+Requisitos Previos
+Instalación
+Estructura del Proyecto
+Configuración de la Base de Datos
+Ejecución de la CLI
+Pruebas
 
-## Requisitos Previos
+1. Requisitos Previos
+Asegúrate de tener el siguiente software instalado en tu sistema:
 
-Asegúrate de tener Python instalado. Puedes descargarlo desde [python.org](https://www.python.org/).
+Python 3.x (https://www.python.org/downloads/)
+pip (instalador de paquetes de Python)
 
-### Pasos para clonar el repositorio y ejecutar el proyecto en Windows
+2. Instalación
+Clona el repositorio:
+git clone https://github.com/dcalle14/Codigo-Limpio.git
+cd codigo-limpio
 
-1. **Clonar el repositorio**:
-   - Abre una terminal o PowerShell en la ubicación donde quieres clonar el proyecto.
-   - Ejecuta el siguiente comando para clonar el repositorio:
+Instala los paquetes de Python requeridos:
+pip install -r requirements.txt
+El archivo requirements.txt debe contener las siguientes bibliotecas:
+sqlalchemy
 
-     ```bash
-     git clone https://github.com/JHONCE79/Codigo-Limpio.git
-     ```
+3. Estructura del Proyecto
+Aquí tienes una descripción general de la estructura del proyecto:
 
-2. **Navegar al directorio del proyecto**:
-   - Después de clonar el repositorio, navega a la carpeta del proyecto:
-
-     ```bash
-     cd Codigo-Limpio
-     ```
-
-3. **Crear y activar un entorno virtual**:
-   - Crea el entorno virtual con este comando:
-
-     ```bash
-     python -m venv venv
-     ```
-
-   - Luego, actívalo:
-
-     ```bash
-     venv\Scripts\activate
-     ```
-
-4. **Instalar las dependencias**:
-
-   - Instala Kivy manualmente:
-
-     ```bash
-     python -m pip install kivy[base] kivy[angle]
-     ```
-
-5. **Navegar a la carpeta `GUI` y ejecutar `interface.py`**:
-   - Ve al directorio donde está el archivo `interface.py`:
-
-     ```bash
-     cd src/GUI
-     ```
-
-   - Luego, ejecuta el archivo con el siguiente comando:
-
-     ```bash
-     python interface.py
-     ```
+.
+├── src
+│   └── logic
+│       ├── db_logic.py        # Base de datos y funciones CRUD
+│       └── cli.py             # CLI para gestionar artículos
+├── tests
+│   └── test_db_logic.py       # Pruebas unitarias para las funciones de la base de datos
+├── requirements.txt           # Dependencias del proyecto
+└── README.md                  # Documentación del proyecto
 
 
-# instrucciones para ejecutar los casos de prueba
+4. Configuración de la Base de Datos
+El proyecto utiliza SQLite como base de datos, que no requiere configuración adicional ya que el archivo de base de datos (items.db) se crea automáticamente en la primera ejecución. SQLAlchemy gestiona la conexión y la creación de tablas.
 
-Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. Por ejemplo:
-1. Clona el repositorio a tu máquina local:
-   ```
-   git clone https://github.com/JHONCE79/Codigo-Limpio.git
-   ```
-2. Navega al directorio del proyecto:
-   ```
-   cd Codigo-Limpio/test
-   ```
-3. Ejecutar casos de prueba:
-   ```
-   python -m unittest TaxesTests.py
-   ```
+Motor de Base de Datos: Definido en db_logic.py:
 
-## Licencia MIT
+engine = create_engine('sqlite:///items.db')
+Creación de Tabla: Ejecutada automáticamente en db_logic.py:
+Base.metadata.create_all(engine)
 
-Copyright (c) 2024 JHONCE79
+5. Ejecución de la CLI
+La CLI permite agregar, actualizar, eliminar y mostrar artículos en la base de datos. Aquí se explica cómo utilizarla:
 
-Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia
-de este software y los archivos de documentación asociados (el "Software"), para tratar
-en el Software sin restricciones, incluidos, entre otros, los derechos
-utilizar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y / o vender
-copias del Software, y permitir a las personas a quienes se les proporcione el Software lo hagan
-lo mismo, sujeto a las siguientes condiciones:
+Ejecuta la CLI:
+python src/logic/cli.py
 
-El aviso de derechos de autor anterior y este aviso de permiso se incluirán en todos
-copias o partes sustanciales del Software.
+Opciones de la CLI: La CLI muestra un menú con las siguientes opciones:
 
-EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O
-IMPLÍCITO, INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD,
-ADECUACIÓN PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO
-LOS AUTORES O TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE NINGÚN RECLAMO, DAÑO U OTRO
-RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRO MODO, DERIVADO DE,
-FUERA DE O EN CONEXIÓN CON EL SOFTWARE O EL USO U OTROS NEGOCIOS EN EL
+--- Menú de Gestión de Artículos ---
+1. Agregar artículo
+2. Actualizar artículo
+3. Eliminar artículo
+4. Ver artículos
+5. Salir
+
+Opción 1 - Agregar artículo: Ingresa el precio, la cantidad y el tipo de impuesto (fixed, exempt o porcentaje como 10%).
+Opción 2 - Actualizar artículo: Ingresa el ID del artículo a actualizar, seguido de nuevos valores para el precio, cantidad y tipo de impuesto.
+Opción 3 - Eliminar artículo: Ingresa el ID del artículo que deseas eliminar.
+Opción 4 - Ver artículos: Muestra una lista de todos los artículos en la base de datos.
+Opción 5 - Salir: Cierra la CLI y la sesión de la base de datos.
+
+6. Pruebas
+El proyecto incluye pruebas unitarias para las operaciones de base de datos. Ejecuta las pruebas para validar la corrección de las operaciones CRUD.
+
+Ejecuta las pruebas:
+python -m unittest discover -s tests -p "test_*.py"
+
+Pruebas con Cobertura (opcional): Para obtener información más detallada sobre las pruebas, instala coverage:
+pip install coverage
+
+Ejecuta las pruebas con cobertura:
+coverage run -m unittest discover -s tests -p "test_*.py"
+
+Luego, genera un informe de cobertura:
+coverage report -m
