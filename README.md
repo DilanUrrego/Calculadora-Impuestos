@@ -40,19 +40,23 @@ daniel calle, juliana franco
 # Sistema de Gestión de Artículos
 Este proyecto proporciona un sistema de gestión de artículos basado en CLI (Interfaz de Línea de Comandos) con funcionalidades CRUD, utilizando SQLAlchemy para las interacciones con la base de datos y unittest para las pruebas.
 
-# Tabla de Contenidos
-Requisitos Previos
-Instalación
-Estructura del Proyecto
-Configuración de la Base de Datos
-Ejecución de la CLI
-Pruebas
+# Estructura
+logic/db_logic.py: Contiene la lógica de negocio, con las funciones de CRUD y el modelo de base de datos.
+console/interfaz_db.py: Contiene la interfaz de línea de comandos (CLI) para interactuar con la aplicación.
+test/db_test.py: Contiene las pruebas unitarias para verificar la funcionalidad de la aplicación.
+
 
 1. Requisitos Previos
 Asegúrate de tener el siguiente software instalado en tu sistema:
 
 Python 3.x (https://www.python.org/downloads/)
 pip (instalador de paquetes de Python)
+SQLAlchemy: El código depende de SQLAlchemy para las operaciones de base de datos.
+
+Clona o Descarga el Código del Proyecto: Descarga los archivos del proyecto y navega al directorio raíz donde están ubicadas las carpetas src y logic y el archivo principal del CLI.
+
+Instala las Dependencias: Abre el símbolo del sistema e instala los paquetes necesarios ejecutando: pip install sqlalchemy
+
 
 2. Instalación
 Clona el repositorio:
@@ -64,34 +68,23 @@ pip install -r requirements.txt
 El archivo requirements.txt debe contener las siguientes bibliotecas:
 sqlalchemy
 
-3. Estructura del Proyecto
-Aquí tienes una descripción general de la estructura del proyecto:
 
-.
-├── src
-│   └── logic
-│       ├── db_logic.py        # Base de datos y funciones CRUD
-│       └── cli.py             # CLI para gestionar artículos
-├── tests
-│   └── test_db_logic.py       # Pruebas unitarias para las funciones de la base de datos
-├── requirements.txt           # Dependencias del proyecto
-└── README.md                  # Documentación del proyecto
-
-
-4. Configuración de la Base de Datos
+3. Configuración de la Base de Datos
 El proyecto utiliza SQLite como base de datos, que no requiere configuración adicional ya que el archivo de base de datos (items.db) se crea automáticamente en la primera ejecución. SQLAlchemy gestiona la conexión y la creación de tablas.
 
-Motor de Base de Datos: Definido en db_logic.py:
+Navega al Directorio del Proyecto: En el símbolo del sistema, ve a la carpeta principal del proyecto:
+cd github.com/dcalle14/Codigo-Limpio.git
 
-engine = create_engine('sqlite:///items.db')
-Creación de Tabla: Ejecutada automáticamente en db_logic.py:
-Base.metadata.create_all(engine)
+jecuta la Aplicación CLI: Ejecuta el CLI que se encuentra en la carpeta console/:
+python -m console.interfaz_db
 
-5. Ejecución de la CLI
+
+
+4. Ejecución de la CLI
 La CLI permite agregar, actualizar, eliminar y mostrar artículos en la base de datos. Aquí se explica cómo utilizarla:
 
 Ejecuta la CLI:
-python src/logic/cli.py
+python src/console/cli.py
 
 Opciones de la CLI: La CLI muestra un menú con las siguientes opciones:
 
@@ -108,17 +101,7 @@ Opción 3 - Eliminar artículo: Ingresa el ID del artículo que deseas eliminar.
 Opción 4 - Ver artículos: Muestra una lista de todos los artículos en la base de datos.
 Opción 5 - Salir: Cierra la CLI y la sesión de la base de datos.
 
-6. Pruebas
-El proyecto incluye pruebas unitarias para las operaciones de base de datos. Ejecuta las pruebas para validar la corrección de las operaciones CRUD.
+5. Pruebas
 
-Ejecuta las pruebas:
-python -m unittest discover -s tests -p "test_*.py"
-
-Pruebas con Cobertura (opcional): Para obtener información más detallada sobre las pruebas, instala coverage:
-pip install coverage
-
-Ejecuta las pruebas con cobertura:
-coverage run -m unittest discover -s tests -p "test_*.py"
-
-Luego, genera un informe de cobertura:
-coverage report -m
+Ejecuta las Pruebas Unitarias: Para ejecutar las pruebas que se encuentran en db_test.py dentro de la carpeta test/, usa el siguiente comando:
+python -m unittest discover -s tests -p "db_test.py"

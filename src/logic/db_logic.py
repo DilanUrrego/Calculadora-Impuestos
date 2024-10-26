@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, Float, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import SQLAlchemyError
 
+
 # Base class for the declarative model
 Base = declarative_base()
 
