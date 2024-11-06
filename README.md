@@ -109,9 +109,9 @@ Opción 5 - Salir: Cierra la CLI y la sesión de la base de datos.
 
 Ejecuta las Pruebas Unitarias: Para ejecutar las pruebas realizadas a las funcionalidades del programa y base de datos ejecutalas bajo los siguientes comandos: 
 
- $> python -m unittest discover -s tests -p "taxes_tests.py" 
+> $> python -m unittest discover -s tests -p "taxes_tests.py" 
 
- $> python -m unittest discover -s tests -p "db_test.py"
+> $> python -m unittest discover -s tests -p "db_test.py"
 
 6. Iniciar aplicación
 
