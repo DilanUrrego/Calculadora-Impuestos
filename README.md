@@ -114,4 +114,5 @@ Ejecuta el archivo app.py para iniciar el servidor web:
 > $> python app.py
 
 Esto debería iniciar el servidor en modo desarrollo en ``` http://127.0.0.1:5000 ```
+
 Luego abre tu navegador web y ve a ``` http://127.0.0.1:5000 ```  para ver la aplicación en funcionamiento.
