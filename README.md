@@ -105,10 +105,13 @@ Opción 3 - Eliminar artículo: Ingresa el ID del artículo que deseas eliminar.
 Opción 4 - Ver artículos: Muestra una lista de todos los artículos en la base de datos.
 Opción 5 - Salir: Cierra la CLI y la sesión de la base de datos.
 
-5. Pruebas
+5. Tests
 
-Ejecuta las Pruebas Unitarias: Para ejecutar las pruebas que se encuentran en db_test.py dentro de la carpeta test/, usa el siguiente comando:
-> $> python -m unittest discover -s tests -p "db_test.py"
+Ejecuta las Pruebas Unitarias: Para ejecutar las pruebas realizadas a las funcionalidades del programa y base de datos ejecutalas bajo los siguientes comandos: 
+
+ $> python -m unittest discover -s tests -p "taxes_tests.py" 
+
+ $> python -m unittest discover -s tests -p "db_test.py"
 
 6. Iniciar aplicación
 
