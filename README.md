@@ -37,15 +37,15 @@ Calcula el total de impuestos y el precio total de una compra con múltiples art
 - **Salida**:
   - Tupla con el total de impuestos y el precio total de la compra.
 
-# Sistema de Gestión de Artículos
+## Sistema de Gestión de Artículos
 Este proyecto proporciona un sistema de gestión de artículos basado en CLI (Interfaz de Línea de Comandos) con funcionalidades CRUD, utilizando SQLAlchemy para las interacciones con la base de datos y unittest para las pruebas.
 
-# Estructura
+## Estructura
 - logic/db_logic.py: Contiene la lógica de negocio, con las funciones de CRUD y el modelo de base de datos.
 - console/interfaz_db.py: Contiene la interfaz de línea de comandos (CLI) para interactuar con la aplicación.
 - test/db_test.py: Contiene las pruebas unitarias para verificar la funcionalidad de la aplicación.
 
-## Instalación y uso
+# Instalación y uso
 
 1. Requisitos Previos
 Asegúrate de tener el siguiente software instalado en tu sistema:
@@ -62,11 +62,14 @@ Instala las Dependencias: Abre el símbolo del sistema e instala los paquetes ne
 2. Instalación
 Clona el repositorio:
 > $> git clone https://github.com/dcalle14/Codigo-Limpio.git
+
 Luego navega a la carpeta del proyecto
 > $> cd codigo-limpio
 
 Instala los paquetes de Python requeridos:
 > $> pip install -r requirements.txt
+
+
 El archivo requirements.txt debe contener las siguientes bibliotecas:
 sqlalchemy
 
@@ -79,7 +82,6 @@ Navega al Directorio del Proyecto: En el símbolo del sistema, ve a la carpeta p
 
 Ejecuta la Aplicación CLI: Ejecuta el CLI que se encuentra en la carpeta console/:
 > $> python -m console.interfaz_db
-
 
 
 4. Ejecución de la CLI
