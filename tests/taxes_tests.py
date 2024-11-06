@@ -162,7 +162,5 @@ class TestCalculateTotalPurchase(unittest.TestCase):
         self.assertAlmostEqual(total_tax, expected_tax)
         self.assertAlmostEqual(total_purchase, expected_total)
 
-
-if __name__ == '_main_':
+if __name__ == '__main__':
     unittest.main()
-    
