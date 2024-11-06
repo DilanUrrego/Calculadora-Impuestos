@@ -34,8 +34,9 @@ Calcula el total de impuestos y el precio total de una compra con múltiples art
   - Tupla con el total de impuestos y el precio total de la compra.
 
 
-# proyecto hecho por
-daniel calle, juliana franco
+# proyecto realizado por:
+Daniel calle y Juliana franco
+Dilan Urrego y Santiago Cordoba - Entrega Web y Refactoring
 
 # Sistema de Gestión de Artículos
 Este proyecto proporciona un sistema de gestión de artículos basado en CLI (Interfaz de Línea de Comandos) con funcionalidades CRUD, utilizando SQLAlchemy para las interacciones con la base de datos y unittest para las pruebas.
@@ -105,3 +106,12 @@ Opción 5 - Salir: Cierra la CLI y la sesión de la base de datos.
 
 Ejecuta las Pruebas Unitarias: Para ejecutar las pruebas que se encuentran en db_test.py dentro de la carpeta test/, usa el siguiente comando:
 python -m unittest discover -s tests -p "db_test.py"
+
+6. Iniciar aplicación
+
+Ejecuta el archivo app.py para iniciar el servidor web:
+
+> $> python app.py
+
+Esto debería iniciar el servidor en modo desarrollo en ``` http://127.0.0.1:5000 ```
+Luego abre tu navegador web y ve a ``` http://127.0.0.1:5000 ```  para ver la aplicación en funcionamiento.

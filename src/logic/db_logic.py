@@ -77,3 +77,4 @@ def delete_item(session, item_id):
     except SQLAlchemyError as e:
         session.rollback()  # Rollback changes on error
         print(f"Error deleting item: {e}")
+        
