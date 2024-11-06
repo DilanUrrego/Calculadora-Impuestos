@@ -6,3 +6,5 @@ output.py
 
 # Ignorar los archivos compilados de Python
 __pycache__/
+
+SecretConfig.py
