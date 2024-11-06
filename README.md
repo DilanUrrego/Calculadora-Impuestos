@@ -1,8 +1,12 @@
+Proyecto con versión hasta la base de datos realizado por Daniel calle y Juliana franco
+
+Proyecto con agregado de server web y refactoring Dilan Urrego y Santiago Cordoba
+
 # Programa para el Cálculo de Impuestos
 
 Este programa calcula el total de impuestos y el precio total de un artículo o una compra compuesta por varios artículos, teniendo en cuenta diferentes tipos de impuestos aplicables según las normativas colombianas.
 
-## Funciones
+## Funcionalidades en el programa
 
 ### `calculate_item_total(price, quantity, tax_type)`
 
@@ -33,39 +37,36 @@ Calcula el total de impuestos y el precio total de una compra con múltiples art
 - **Salida**:
   - Tupla con el total de impuestos y el precio total de la compra.
 
-
-# proyecto realizado por:
-Daniel calle y Juliana franco
-Dilan Urrego y Santiago Cordoba - Entrega Web y Refactoring
-
 # Sistema de Gestión de Artículos
 Este proyecto proporciona un sistema de gestión de artículos basado en CLI (Interfaz de Línea de Comandos) con funcionalidades CRUD, utilizando SQLAlchemy para las interacciones con la base de datos y unittest para las pruebas.
 
 # Estructura
-logic/db_logic.py: Contiene la lógica de negocio, con las funciones de CRUD y el modelo de base de datos.
-console/interfaz_db.py: Contiene la interfaz de línea de comandos (CLI) para interactuar con la aplicación.
-test/db_test.py: Contiene las pruebas unitarias para verificar la funcionalidad de la aplicación.
+- logic/db_logic.py: Contiene la lógica de negocio, con las funciones de CRUD y el modelo de base de datos.
+- console/interfaz_db.py: Contiene la interfaz de línea de comandos (CLI) para interactuar con la aplicación.
+- test/db_test.py: Contiene las pruebas unitarias para verificar la funcionalidad de la aplicación.
 
+## Instalación y uso
 
 1. Requisitos Previos
 Asegúrate de tener el siguiente software instalado en tu sistema:
 
-Python 3.x (https://www.python.org/downloads/)
-pip (instalador de paquetes de Python)
-SQLAlchemy: El código depende de SQLAlchemy para las operaciones de base de datos.
+- Python 3.x (https://www.python.org/downloads/)
+- pip (instalador de paquetes de Python)
+- SQLAlchemy: El código depende de SQLAlchemy para las operaciones de base de datos.
 
 Clona o Descarga el Código del Proyecto: Descarga los archivos del proyecto y navega al directorio raíz donde están ubicadas las carpetas src y logic y el archivo principal del CLI.
 
-Instala las Dependencias: Abre el símbolo del sistema e instala los paquetes necesarios ejecutando: pip install sqlalchemy
-
+Instala las Dependencias: Abre el símbolo del sistema e instala los paquetes necesarios ejecutando el siguiente comando
+> $> pip install sqlalchemy
 
 2. Instalación
 Clona el repositorio:
-git clone https://github.com/dcalle14/Codigo-Limpio.git
-cd codigo-limpio
+> $> git clone https://github.com/dcalle14/Codigo-Limpio.git
+Luego navega a la carpeta del proyecto
+> $> cd codigo-limpio
 
 Instala los paquetes de Python requeridos:
-pip install -r requirements.txt
+> $> pip install -r requirements.txt
 El archivo requirements.txt debe contener las siguientes bibliotecas:
 sqlalchemy
 
@@ -74,10 +75,10 @@ sqlalchemy
 El proyecto utiliza SQLite como base de datos, que no requiere configuración adicional ya que el archivo de base de datos (items.db) se crea automáticamente en la primera ejecución. SQLAlchemy gestiona la conexión y la creación de tablas.
 
 Navega al Directorio del Proyecto: En el símbolo del sistema, ve a la carpeta principal del proyecto:
-cd github.com/dcalle14/Codigo-Limpio.git
+> $> cd github.com/dcalle14/Codigo-Limpio.git
 
-jecuta la Aplicación CLI: Ejecuta el CLI que se encuentra en la carpeta console/:
-python -m console.interfaz_db
+Ejecuta la Aplicación CLI: Ejecuta el CLI que se encuentra en la carpeta console/:
+> $> python -m console.interfaz_db
 
 
 
@@ -85,7 +86,7 @@ python -m console.interfaz_db
 La CLI permite agregar, actualizar, eliminar y mostrar artículos en la base de datos. Aquí se explica cómo utilizarla:
 
 Ejecuta la CLI:
-python src/console/cli.py
+> $> python src/console/cli.py
 
 Opciones de la CLI: La CLI muestra un menú con las siguientes opciones:
 
@@ -105,7 +106,7 @@ Opción 5 - Salir: Cierra la CLI y la sesión de la base de datos.
 5. Pruebas
 
 Ejecuta las Pruebas Unitarias: Para ejecutar las pruebas que se encuentran en db_test.py dentro de la carpeta test/, usa el siguiente comando:
-python -m unittest discover -s tests -p "db_test.py"
+> $> python -m unittest discover -s tests -p "db_test.py"
 
 6. Iniciar aplicación
 
