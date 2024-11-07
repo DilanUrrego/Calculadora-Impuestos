@@ -5,7 +5,7 @@ from flask import Flask
 from flask import render_template, request, session, flash, redirect, url_for
 from functools import wraps
 
-from controllers.users_controller import ControladorUsuarios
+from src.controllers.users_controller import ControladorUsuarios
 
 
 try:
@@ -84,8 +84,23 @@ def register():
         except Exception as e:
             flash(f"Error al registrar el usuario: {e}", "danger")
             return redirect(url_for('register'))
-
     return render_template('register.html')
+
+@app.route('/change_password', methods=['GET', 'POST'])
+def change_password():
+    if request.method == 'POST':
+        nombre = request.form['username']
+        contrasena = request.form['currentpassword']
+        nueva_contrasena = request.form['newpassword']
+        if ControladorUsuarios.contrasena_es_igual(nombre, contrasena):
+            ControladorUsuarios.cambiar_contrasena(nombre, nueva_contrasena)
+    return render_template('change_password.html')
+
+@app.route('/delete', methods=['GET', 'POST'])
+def delete():
+    if request.method == 'POST':
+        pass
+    return render_template('delete.html')
 
 
 if __name__=='__main__':

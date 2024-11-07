@@ -111,4 +111,38 @@ class ControladorUsuarios:
             finally:
                 cursor.close()
                 connection.close()
+
+    @staticmethod
+    def contrasena_es_igual(nombre, contrasena):
+        cursor, connection = ControladorUsuarios.obtener_cursor()
+        if cursor:
+            try:
+                query = "SELECT contrasena FROM usuarios WHERE nombre = %s AND contrasena = %s"
+                cursor.execute(query, (nombre, contrasena))
+                result = cursor.fetchone()[0]
+                connection.close()
+                if result == contrasena:
+                    return True
+                else:
+                    return False
+            except Exception as e:
+                print("Error al verificar las credenciales:", e)
+                connection.close()
+                return None
+            
+    @staticmethod
+    def cambiar_contrasena(nombre, new_contrasena):
+        cursor, connection = ControladorUsuarios.obtener_cursor()
+        if cursor:
+            try:
+                query = "UPDATE usuarios SET contrasena = %s WHERE nombre = %s"
+                cursor.execute(query, (new_contrasena, nombre))
+                connection.commit()
+                print("Contraseña editada correctamente.")
+            except Exception as e:
+                connection.rollback()
+                print(f"Error al editar contraseña: {e}")
+            finally:
+                cursor.close()
+                connection.close()
             

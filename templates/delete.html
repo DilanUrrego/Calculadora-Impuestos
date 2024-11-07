@@ -57,46 +57,26 @@
         button:hover {
             background-color: #0056b3;
         }
-        .register-button {
-            background-color: #28a745;
+        .delete-button {
+            background-color: #a72828;
         }
-        .register-button:hover {
-            background-color: #218838;
-        }
-        .change-password-button{
-            color: #007bff;
-            background-color: #ddd;
-        }
-        .change-password-button:hover{
-            color: white;
-            background-color: #b3b300;
-        }
-        .delete-button{
-            color: #007bff;
-            background-color: #ddd;
-        }
-        .delete-button:hover{
-            color: white;
-            background-color: #c60000;
+        .delete-button:hover {
+            background-color: #a01717;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>Iniciar Sesión</h1>
-        <form action="/login" method="POST">
+        <form action="/delete" method="POST">
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required>
 
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">Continuar</button>
+            <button class="delete-button" type ="submit">Eliminar Usuario</button>
         </form>
-        <button class="register-button" onclick="window.location.href='/register'">Registrarse</button>
-        <button class="change-password-button" onclick="window.location.href='/change_password'">Cambiar contraseña</button>
-        <button class="delete-button" onclick="window.location.href='/delete'">Eliminar Usuario</button>
-    
     </div>
 </body>
 </html>
