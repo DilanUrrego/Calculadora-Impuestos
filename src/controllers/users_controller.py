@@ -145,4 +145,19 @@ class ControladorUsuarios:
             finally:
                 cursor.close()
                 connection.close()
-            
+
+    @staticmethod
+    def eliminar_usuario(nombre, contrasena):
+        cursor, connection = ControladorUsuarios.obtener_cursor()
+        if cursor:
+            try:
+                query = "DELETE FROM usuarios WHERE nombre = %s AND contrasena = %s"
+                cursor.execute(query, (nombre, contrasena))
+                connection.commit()
+                print("Usuario eliminado correctamente.")
+            except Exception as e:
+                connection.rollback()
+                print(f"Error al eliminar usuario: {e}")
+            finally:
+                cursor.close()
+                connection.close()

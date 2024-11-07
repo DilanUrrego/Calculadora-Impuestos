@@ -32,8 +32,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-
-app = Flask(__name__)
+app = Flask(__name__, template_folder='src/templates')
 app.secret_key = 'your_secret_key'
 
 # decorator: se usa para indicar el URL Path por el que se va a invocar nuestra función
@@ -94,12 +93,20 @@ def change_password():
         nueva_contrasena = request.form['newpassword']
         if ControladorUsuarios.contrasena_es_igual(nombre, contrasena):
             ControladorUsuarios.cambiar_contrasena(nombre, nueva_contrasena)
+            return redirect(url_for('login'))
     return render_template('change_password.html')
 
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
     if request.method == 'POST':
-        pass
+        nombre = request.form['username']
+        contrasena = request.form['password']
+        if ControladorUsuarios.verificar_credenciales(nombre, contrasena):
+            ControladorUsuarios.eliminar_usuario(nombre, contrasena)
+            return redirect(url_for('login'))
+        else:
+            flash("Usuario o contraseña incorrectos", "danger")
+            return redirect(url_for('login'))
     return render_template('delete.html')
 
 
