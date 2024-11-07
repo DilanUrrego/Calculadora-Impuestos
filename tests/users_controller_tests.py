@@ -65,31 +65,37 @@ class TestControladorUsuarios(unittest.TestCase):
         mock_cursor.close.assert_called_once()
         mock_connection.close.assert_called_once()
 
-    @patch("src.controllers.users_controller.ControladorUsuarios.obtener_cursor")
-    def test_verificar_credenciales_correctas(self, mock_obtener_cursor):
-        mock_cursor = MagicMock()
-        mock_connection = MagicMock()
-        mock_cursor.fetchone.return_value = ("testuser", "testpassword")
-        mock_obtener_cursor.return_value = (mock_cursor, mock_connection)
+    @patch('src.controllers.users_controller.Connection.cursor')
+    def test_verificar_credenciales_correctas(self, mock_cursor):
+        # Configurar el mock de la conexión y el cursor
+        mock_cursor_instance = MagicMock()
+        mock_cursor.return_value = mock_cursor_instance
+        mock_cursor_instance.fetchone.return_value = True  # Simula credenciales correctas
 
-        resultado = ControladorUsuarios.verificar_credenciales("testuser", "testpassword")
+        controlador = ControladorUsuarios(connection=MagicMock())
+        
+        # Llama a la función
+        resultado = controlador.verificar_credenciales("usuario", "contraseña")
+
+        # Aserciones
         self.assertTrue(resultado)
+        mock_cursor_instance.close.assert_called_once()  # Verifica que el cursor fue cerrado
 
-        mock_cursor.close.assert_called_once()
-        mock_connection.close.assert_called_once()
+    @patch('src.controllers.users_controller.Connection.cursor')
+    def test_verificar_credenciales_incorrectas(self, mock_cursor):
+        # Configurar el mock de la conexión y el cursor
+        mock_cursor_instance = MagicMock()
+        mock_cursor.return_value = mock_cursor_instance
+        mock_cursor_instance.fetchone.return_value = None  # Simula credenciales incorrectas
 
-    @patch("src.controllers.users_controller.ControladorUsuarios.obtener_cursor")
-    def test_verificar_credenciales_incorrectas(self, mock_obtener_cursor):
-        mock_cursor = MagicMock()
-        mock_connection = MagicMock()
-        mock_cursor.fetchone.return_value = None
-        mock_obtener_cursor.return_value = (mock_cursor, mock_connection)
+        controlador = ControladorUsuarios(connection=MagicMock())
+        
+        # Llama a la función
+        resultado = controlador.verificar_credenciales("usuario", "contraseña_incorrecta")
 
-        resultado = ControladorUsuarios.verificar_credenciales("testuser", "wrongpassword")
+        # Aserciones
         self.assertFalse(resultado)
-
-        mock_cursor.close.assert_called_once()
-        mock_connection.close.assert_called_once()
+        mock_cursor_instance.close.assert_called_once()  # Verifica que el cursor fue cerrado
 
     @patch("src.controllers.users_controller.ControladorUsuarios.obtener_cursor")
     def test_usuario_existe_true(self, mock_obtener_cursor):
