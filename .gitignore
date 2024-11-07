@@ -7,4 +7,5 @@ output.py
 # Ignorar los archivos compilados de Python
 __pycache__/
 
-SecretConfig.py
+# Ignorar los datos de tu base de datos
+SecretConfig

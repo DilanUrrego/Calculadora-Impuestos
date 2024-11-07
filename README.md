@@ -69,9 +69,9 @@ Luego navega a la carpeta del proyecto
 Instala los paquetes de Python requeridos:
 > $> pip install -r requirements.txt
 
+Ten en cuenta que antes de ejecutar la aplicación web se debe ajustar el modulo llamado``` SecretConfig-Sample ```con los datos de tu Neon.tech para que esta funcione correctamente al control del registro de usuarios.
 
-El archivo requirements.txt debe contener las siguientes bibliotecas:
-sqlalchemy
+El archivo requirements.txt debe contener las siguientes bibliotecas: sqlalchemy
 
 
 3. Configuración de la Base de Datos
