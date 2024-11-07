@@ -1,4 +1,4 @@
-#Copie aquí las credenciales de su db, luego cambie el nombre del archivo a "SecretConfig.py"
+#Copie aquí las credenciales de su base de datos, y luego cambie el nombre del modulo a "SecretConfig.py"
 
 PGHOST=''
 PGDATABASE=''
